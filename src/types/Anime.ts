@@ -1,11 +1,3 @@
-type Data = {
-  id: string;
-  type: string;
-  links: Links;
-  attributes: Attributes;
-  relationships: Relationships;
-};
-
 type Relationships = {
   genres: Genres;
   categories: Genres;
@@ -145,7 +137,11 @@ type GenreLinks = Links & {
 };
 
 type Anime = {
-  data: Data;
+  id: string;
+  type: string;
+  links: Links;
+  attributes: Attributes;
+  relationships: Relationships;
 };
 
 export default Anime;
