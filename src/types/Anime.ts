@@ -21,7 +21,7 @@ type Genres = {
   links: GenreLinks;
 };
 
-type Attributes = {
+export type Attributes = {
   createdAt: string;
   updatedAt: string;
   slug: string;
