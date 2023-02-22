@@ -1,6 +1,6 @@
 export type LoadingSpinnerProps = {
   size?: 'xs' | 'sm' | 'md' | 'lg';
-  className: React.HTMLProps<HTMLDivElement>['className'];
+  className?: React.HTMLProps<HTMLDivElement>['className'];
 };
 
 const sizing = {
