@@ -43,7 +43,7 @@ export type Attributes = {
   ageRating: string;
   ageRatingGuide: string;
   subtype: Subtype;
-  status: string;
+  status: 'current' | 'finished' | 'tba' | 'unreleased' | 'upcoming';
   tba?: string;
   posterImage: PosterImage;
   coverImage: CoverImage;
