@@ -8,6 +8,8 @@ import getAnimeGenres from '../api/getAnimeGenresById';
 import { createPortal } from 'react-dom';
 import LoadingSpinner from './LoadingSpinner';
 
+// TODO: show different colors of rating depending on points
+
 type FloatingProps = {
   strategy: 'absolute' | 'fixed';
   placement: string;
