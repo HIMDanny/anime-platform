@@ -9,6 +9,7 @@ import {
   useFocus,
   useInteractions,
   safePolygon,
+  flip,
 } from '@floating-ui/react';
 import CardPopper from './CardPopper';
 import { Attributes } from '../types/Anime';
@@ -23,11 +24,11 @@ const AnimeCard = ({ id, attributes }: AnimeCardProps) => {
 
   const arrowRef = useRef(null);
 
-  const { x, y, refs, strategy, context } = useFloating({
+  const { x, y, refs, strategy, context, placement } = useFloating({
     open: isPopperOpen,
     onOpenChange: setIsPopperOpen,
     placement: 'right-start',
-    middleware: [offset(10), shift(), arrow({ element: arrowRef })],
+    middleware: [offset(10), shift(), flip(), arrow({ element: arrowRef })],
     whileElementsMounted: autoUpdate,
   });
 
@@ -64,6 +65,7 @@ const AnimeCard = ({ id, attributes }: AnimeCardProps) => {
       <CardPopper
         open={isPopperOpen}
         ref={refs.setFloating}
+        cardId={id}
         arrowRef={arrowRef}
         attributes={attributes}
         floatingProps={{
@@ -71,6 +73,7 @@ const AnimeCard = ({ id, attributes }: AnimeCardProps) => {
           x,
           y,
           getFloatingProps,
+          placement,
         }}
       />
     </>
