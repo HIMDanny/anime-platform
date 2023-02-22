@@ -8,34 +8,23 @@ type TrendingAnimes = {
 };
 
 export const loader = async (): Promise<TrendingAnimes> => {
-  const { data } = await fetchTrendingAnimes();
+  const { data: trendingAnimes } = await fetchTrendingAnimes();
 
-  return { trendingAnimes: data };
+  return { trendingAnimes };
 };
 
 const Home = () => {
   const { trendingAnimes } = useLoaderData() as TrendingAnimes;
-  console.log(trendingAnimes);
 
   return (
-    <div className="flex gap-4">
-      {trendingAnimes
-        .slice(0, 3)
-        .map(
-          ({
-            id,
-            attributes: { titles, posterImage, subtype, description },
-          }: Anime) => (
-            <AnimeCard
-              key={id}
-              id={id}
-              title={titles.en ?? titles.en_jp}
-              thumbnail={posterImage.medium}
-              type={subtype}
-              description={description}
-            />
-          ),
-        )}
+    <div className="container mx-auto flex gap-4">
+      {trendingAnimes.map(({ id, attributes }: Anime) => (
+        <AnimeCard
+          key={id}
+          id={id}
+          attributes={attributes}
+        />
+      ))}
     </div>
   );
 };
