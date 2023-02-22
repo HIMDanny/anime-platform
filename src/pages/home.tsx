@@ -17,7 +17,7 @@ const Home = () => {
   const { trendingAnimes } = useLoaderData() as TrendingAnimes;
 
   return (
-    <div className="container mx-auto flex gap-4">
+    <div className="container mx-auto mt-4 flex gap-4">
       {trendingAnimes.map(({ id, attributes }: Anime) => (
         <AnimeCard
           key={id}
