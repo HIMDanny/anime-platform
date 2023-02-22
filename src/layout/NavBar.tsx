@@ -1,5 +1,9 @@
 import LoadingSpinner from '../components/LoadingSpinner';
 
+// TODO: creaate separate component for search
+
+// TODO: add logic of searching anime by title
+
 const NavBar = () => {
   return (
     <nav className="rounded border-gray-200 bg-gray-900 px-2 py-2.5 sm:px-4">
