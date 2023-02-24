@@ -4,8 +4,12 @@ import NavBar from './NavBar';
 const Layout = () => {
   return (
     <>
-      <NavBar />
-      <Outlet />
+      <header className="sticky top-0 z-10 w-full">
+        <NavBar />
+      </header>
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 };
