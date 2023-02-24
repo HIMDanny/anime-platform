@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'https://kitsu.io/api/edge',
+  baseURL: import.meta.env.VITE_ANIME_API,
 });
