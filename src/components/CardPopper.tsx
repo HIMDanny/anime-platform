@@ -1,5 +1,7 @@
-import { forwardRef, RefObject } from 'react';
-import { Attributes } from '../types/Anime';
+/* eslint-disable @typescript-eslint/promise-function-async */
+/* eslint-disable react/display-name */
+import { forwardRef, type RefObject } from 'react';
+import { type Attributes } from '../types/Anime';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import StatusBadge from './StatusBadge';
@@ -41,7 +43,7 @@ const CardPopper = forwardRef<HTMLDivElement, CardPopperProps>(
     const popperContent = (
       <>
         <p>{attributes.titles.en ?? attributes.titles.en}</p>
-        {attributes.description && (
+        {attributes.description !== '' && (
           <p className="mt-2 text-xs md:text-sm">{`${attributes.description
             .split(' ')
             .slice(0, 30)
@@ -54,7 +56,7 @@ const CardPopper = forwardRef<HTMLDivElement, CardPopperProps>(
             <span className="ml-1 mr-2">
               {attributes.startDate.split('-')[0]}
             </span>{' '}
-            {attributes.ageRating && (
+            {attributes.ageRating !== '' && (
               <span className="ml-1 mr-2">{attributes.ageRating}</span>
             )}{' '}
             <StatusBadge
@@ -91,7 +93,7 @@ const CardPopper = forwardRef<HTMLDivElement, CardPopperProps>(
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
         ref={ref}
-        className="relative min-w-[150px] max-w-[350px] rounded-lg bg-gray-900 px-4 py-3"
+        className="relative z-20 min-w-[150px] max-w-[350px] rounded-lg bg-gray-900 px-4 py-3"
         style={{
           position: floatingProps.strategy,
           top: floatingProps.y ?? 0,
