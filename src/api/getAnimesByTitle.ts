@@ -1,15 +1,14 @@
-import debounce from '../utils/debounce';
+import type Animes from '../types/Animes';
 import axios from './axios';
 
 const getAnimesByTitle = async (title: string) => {
   try {
     const { data } = await axios.get(`anime?filter[text]=${title}`);
-    console.log(data);
 
-    return data;
+    return data as Animes;
   } catch (error: any) {
     console.error(error.response.data.errors);
   }
 };
 
-export default debounce(getAnimesByTitle, 300);
+export default getAnimesByTitle;
