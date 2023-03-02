@@ -1,4 +1,4 @@
-import NavBarSearch from '../components/NavBarSearch';
+import NavBarSearch from '../components/NavSearch/NavSearch';
 
 // TODO: creaate separate component for search
 
