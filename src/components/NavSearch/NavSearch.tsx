@@ -9,7 +9,6 @@ import NavSearchDropdown from './NavSearchDropdown';
 
 const NavBarSearch = () => {
   const [searchInput, setSearchInput] = useState('');
-  const [isSearchInFocus, setIsSearchInFocus] = useState(false);
 
   const debouncedSearchInput = useDebounce(searchInput, 300);
 
@@ -33,20 +32,10 @@ const NavBarSearch = () => {
     e.preventDefault();
   };
 
-  const handleSearchFocus = () => {
-    setIsSearchInFocus(true);
-  };
-
-  const handleSearchBlur = () => {
-    setIsSearchInFocus(false);
-  };
-
   return (
     <form
       onSubmit={onFormSubmit}
       className="relative"
-      onFocus={handleSearchFocus}
-      onBlur={handleSearchBlur}
     >
       <label
         htmlFor="default-search"
