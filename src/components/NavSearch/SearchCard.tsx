@@ -21,7 +21,7 @@ const SearchCard = ({ id, attributes }: SearchCardProps) => {
       <div>
         <p>{title}</p>
         <TypeList
-          className="mt-2"
+          className="mt-2 text-sm"
           attributes={attributes}
         />
       </div>
