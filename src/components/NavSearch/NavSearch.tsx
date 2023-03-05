@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
-import classNames from 'classnames';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import getAnimesByTitle from '../../api/getAnimesByTitle';
 import useDebounce from '../../hooks/useDebounce';
@@ -9,6 +8,8 @@ import NavSearchDropdown from './NavSearchDropdown';
 
 const NavBarSearch = () => {
   const [searchInput, setSearchInput] = useState('');
+
+  const formRef = useRef<HTMLFormElement>(null);
 
   const debouncedSearchInput = useDebounce(searchInput, 300);
 
@@ -32,10 +33,25 @@ const NavBarSearch = () => {
     e.preventDefault();
   };
 
+  // checks if user clicked outside of form
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (formRef.current && !formRef.current.contains(e.target)) {
+        setSearchInput('');
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, []);
+
   return (
     <form
       onSubmit={onFormSubmit}
       className="relative"
+      ref={formRef}
     >
       <label
         htmlFor="default-search"
