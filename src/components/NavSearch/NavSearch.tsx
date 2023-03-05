@@ -89,10 +89,7 @@ const NavBarSearch = () => {
           autoComplete="off"
           type="text"
           id="default-search"
-          className={classNames(
-            'block w-96 rounded-lg border border-gray-600 bg-gray-700 p-2 pl-10 text-sm text-white placeholder-gray-400 outline-none transition-[width] focus:w-full focus:border-blue-500 focus:ring-1 focus:ring-blue-500',
-            { 'w-full': searchInput !== '' },
-          )}
+          className="block w-1/2 rounded-lg border border-gray-600 bg-gray-700 p-2 pl-10 text-sm text-white placeholder-gray-400 outline-none transition-[width] focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
           placeholder="Search anime by title..."
           required
           value={searchInput}
