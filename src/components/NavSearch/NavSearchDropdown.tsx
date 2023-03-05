@@ -10,7 +10,7 @@ const DropdownContainer: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
   props,
 ) => (
   <div
-    className={`absolute top-12 max-h-[500px] w-1/2 overflow-y-auto bg-gray-900 p-2 ${props.className}`}
+    className={`absolute top-12 max-h-[500px] w-full overflow-y-auto bg-gray-900 p-2 ${props.className}`}
   >
     {props.children}
   </div>
