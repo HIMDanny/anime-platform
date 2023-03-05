@@ -6,16 +6,26 @@ export type NavSearchDropdownProps = {
   items: Anime[] | undefined;
 };
 
+const DropdownContainer: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
+  props,
+) => (
+  <div
+    className={`absolute top-12 max-h-[500px] w-1/2 overflow-y-auto bg-gray-900 p-2 ${props.className}`}
+  >
+    {props.children}
+  </div>
+);
+
 const NavSearchDropdown = ({ items }: NavSearchDropdownProps) => {
   let dropdownContent;
   if (typeof items === 'undefined') {
     return (
-      <div className="absolute top-12 w-1/2 bg-gray-900 p-3">
+      <DropdownContainer className="p-3">
         <LoadingSpinner
           size="lg"
           className="text-center"
         />
-      </div>
+      </DropdownContainer>
     );
   }
 
@@ -31,10 +41,6 @@ const NavSearchDropdown = ({ items }: NavSearchDropdownProps) => {
     ));
   }
 
-  return (
-    <div className="absolute top-12 w-1/2 bg-gray-900 p-2">
-      {dropdownContent}
-    </div>
-  );
+  return <DropdownContainer>{dropdownContent}</DropdownContainer>;
 };
 export default NavSearchDropdown;
