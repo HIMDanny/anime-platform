@@ -9,6 +9,7 @@ import { useQuery } from 'react-query';
 import getAnimeGenres from '../api/getAnimeGenresById';
 import { createPortal } from 'react-dom';
 import LoadingSpinner from './LoadingSpinner';
+import TypeList from './TypeList';
 
 // TODO: show different colors of rating depending on points
 
@@ -49,22 +50,10 @@ const CardPopper = forwardRef<HTMLDivElement, CardPopperProps>(
             .slice(0, 30)
             .join(' ')}...`}</p>
         )}
-        <div className="mt-2 text-sm">
-          <span className="font-bold">Type</span>:{' '}
-          <div className="inline-block">
-            <span className="ml-2 mr-2">{attributes.subtype}</span>{' '}
-            <span className="ml-1 mr-2">
-              {attributes.startDate.split('-')[0]}
-            </span>{' '}
-            {attributes.ageRating !== '' && (
-              <span className="ml-1 mr-2">{attributes.ageRating}</span>
-            )}{' '}
-            <StatusBadge
-              status={attributes.status}
-              className="ml-1 mr-2 text-xs"
-            />
-          </div>
-        </div>
+        <TypeList
+          className="mt-2 text-sm"
+          attributes={attributes}
+        />
         {genres?.meta.count > 0 && (
           <div className="mt-2 whitespace-pre-line text-sm">
             <span className="mr-2 font-bold">Genres:</span>
