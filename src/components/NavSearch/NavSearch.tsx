@@ -9,6 +9,8 @@ import NavSearchDropdown from './NavSearchDropdown';
 const NavBarSearch = () => {
   const [searchInput, setSearchInput] = useState('');
 
+  const { data, isSearching } = useSearchByTitle(searchInput);
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const debouncedSearchInput = useDebounce(searchInput, 300);
@@ -102,11 +104,37 @@ const NavBarSearch = () => {
       </div>
       {searchInput !== '' && (
         <NavSearchDropdown
-          items={searchedAnimes?.data}
+          items={(data as Animes).data}
           onClose={clearSearchInput}
         />
       )}
     </form>
   );
 };
+
+function useSearchByTitle(searchTerm: string) {
+  const debouncedSearchInput = useDebounce(searchTerm, 500);
+
+  const [isSearching, setIsSearching] = useState(false);
+  const [data, setData] = useState<Animes | {}>({});
+
+  const trimmedSearchInput = debouncedSearchInput.trim();
+
+  useEffect(() => {
+    if (trimmedSearchInput) {
+      setIsSearching(true);
+      getAnimesByTitle(debouncedSearchInput).then((r) => {
+        setIsSearching(false);
+
+        setData(r as Animes);
+      });
+    } else {
+      setData({});
+      setIsSearching(false);
+    }
+  }, [trimmedSearchInput]);
+
+  return { data, isSearching };
+}
+
 export default NavBarSearch;
