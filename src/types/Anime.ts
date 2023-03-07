@@ -125,6 +125,7 @@ type Subtype = 'ONA' | 'OVA' | 'TV' | 'movie' | 'music' | 'special';
 type Titles = {
   en: string;
   en_jp: string;
+  en_us: string;
   ja_jp: string;
 };
 
