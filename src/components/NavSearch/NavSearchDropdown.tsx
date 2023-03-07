@@ -31,13 +31,17 @@ const NavSearchDropdown = ({ items, onClose }: NavSearchDropdownProps) => {
   }
 
   if (items?.length! > 0) {
-    dropdownContent = items!.map(({ id, attributes }) => (
-      <SearchCard
-        key={id}
-        id={id}
-        attributes={attributes}
-      />
-    ));
+    dropdownContent = (
+      <ul>
+        {items!.map(({ id, attributes }) => (
+          <SearchCard
+            key={id}
+            id={id}
+            attributes={attributes}
+          />
+        ))}
+      </ul>
+    );
   }
 
   return (

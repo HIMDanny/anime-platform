@@ -12,7 +12,7 @@ const SearchCard = ({ id, attributes }: SearchCardProps) => {
     attributes.titles.en ?? attributes.titles.en_jp ?? attributes.titles.en_us;
 
   return (
-    <div className="flex gap-3 py-1 px-1">
+    <li className="flex gap-3 py-1 px-1">
       <img
         className="w-14"
         src={attributes.posterImage.tiny}
@@ -25,7 +25,7 @@ const SearchCard = ({ id, attributes }: SearchCardProps) => {
           attributes={attributes}
         />
       </div>
-    </div>
+    </li>
   );
 };
 export default SearchCard;
