@@ -33,11 +33,15 @@ const NavBarSearch = () => {
     e.preventDefault();
   };
 
+  const clearSearchInput = () => {
+    setSearchInput('');
+  };
+
   // checks if user clicked outside of form
   useEffect(() => {
     const handleClickOutside = (e: any) => {
       if (formRef.current && !formRef.current.contains(e.target)) {
-        setSearchInput('');
+        clearSearchInput();
       }
     };
 
@@ -96,7 +100,12 @@ const NavBarSearch = () => {
           onChange={onSearchInputChange}
         />
       </div>
-      {searchInput !== '' && <NavSearchDropdown items={searchedAnimes?.data} />}
+      {searchInput !== '' && (
+        <NavSearchDropdown
+          items={searchedAnimes?.data}
+          onClose={clearSearchInput}
+        />
+      )}
     </form>
   );
 };
