@@ -2,9 +2,14 @@ type StatusBadgeProps = {
   status: 'current' | 'finished' | 'tba' | 'unreleased' | 'upcoming';
 } & React.HTMLProps<HTMLSpanElement>;
 
-const StatusBadge: React.FC<StatusBadgeProps> = ({ status, className }) => {
+const StatusBadge: React.FC<StatusBadgeProps> = ({
+  status: statusProp,
+  className,
+}) => {
+  const status = statusProp === 'current' ? 'opening' : statusProp;
+
   const statusColor =
-    status === 'current'
+    status === 'opening'
       ? 'bg-blue-900 text-blue-300'
       : status === 'finished'
       ? 'bg-green-900 text-green-300'
@@ -20,7 +25,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status, className }) => {
     <span
       className={`rounded px-2.5 py-0.5 font-medium ${statusColor} ${className}`}
     >
-      {status === 'current' ? 'opening' : status}
+      {status}
     </span>
   );
 };
