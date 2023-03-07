@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import getAnimeGenres from '../api/getAnimeGenresById';
 import { createPortal } from 'react-dom';
 import LoadingSpinner from './LoadingSpinner';
-import TypeList from './TypeList';
+import AnimeTypes from './AnimeTypes';
 
 // TODO: show different colors of rating depending on points
 
@@ -50,7 +50,7 @@ const CardPopper = forwardRef<HTMLDivElement, CardPopperProps>(
             .slice(0, 30)
             .join(' ')}...`}</p>
         )}
-        <TypeList
+        <AnimeTypes
           className="mt-2 text-sm"
           attributes={attributes}
         />

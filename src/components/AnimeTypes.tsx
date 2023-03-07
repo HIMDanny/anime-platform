@@ -1,12 +1,12 @@
 import { type Attributes } from '../types/Anime';
 import StatusBadge from './StatusBadge';
 
-export type TypeListProps = {
+export type AnimeTypesProps = {
   attributes: Attributes;
   className?: HTMLDivElement['className'];
 };
 
-const TypeList: React.FC<TypeListProps> = ({ attributes, className }) => {
+const AnimeTypes: React.FC<AnimeTypesProps> = ({ attributes, className }) => {
   return (
     <div className={className}>
       <span className="font-bold">Type</span>:{' '}
@@ -26,4 +26,4 @@ const TypeList: React.FC<TypeListProps> = ({ attributes, className }) => {
     </div>
   );
 };
-export default TypeList;
+export default AnimeTypes;

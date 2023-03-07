@@ -1,5 +1,5 @@
 import { type Attributes } from '../../types/Anime';
-import TypeList from '../TypeList';
+import AnimeTypes from '../AnimeTypes';
 
 export type SearchCardProps = {
   id: string;
@@ -20,7 +20,7 @@ const SearchCard = ({ id, attributes }: SearchCardProps) => {
       />
       <div>
         <p>{title}</p>
-        <TypeList
+        <AnimeTypes
           className="mt-2 text-sm"
           attributes={attributes}
         />
