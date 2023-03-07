@@ -13,6 +13,7 @@ const NavBarSearch = () => {
 
   const debouncedSearchInput = useDebounce(searchInput, 300);
 
+  // ? sometimes don't show data when deleting the word by letter
   const {
     data: searchedAnimes,
     isLoading,
@@ -22,7 +23,6 @@ const NavBarSearch = () => {
     () => getAnimesByTitle(debouncedSearchInput),
     {
       enabled: Boolean(debouncedSearchInput),
-      refetchOnWindowFocus: false,
     },
   );
 
