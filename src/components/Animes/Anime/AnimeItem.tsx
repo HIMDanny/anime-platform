@@ -19,7 +19,7 @@ type AnimeCardProps = {
   attributes: Attributes;
 };
 
-const AnimeCard = ({ id, attributes }: AnimeCardProps) => {
+const AnimeItem = ({ id, attributes }: AnimeCardProps) => {
   const [isPopperOpen, setIsPopperOpen] = useState(false);
 
   const arrowRef = useRef(null);
@@ -79,4 +79,4 @@ const AnimeCard = ({ id, attributes }: AnimeCardProps) => {
     </>
   );
 };
-export default AnimeCard;
+export default AnimeItem;
