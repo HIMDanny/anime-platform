@@ -1,4 +1,4 @@
-import { type Attributes } from '../types/Anime';
+import { type Attributes } from '../../../types/Anime';
 import StatusBadge from './StatusBadge';
 
 export type AnimeTypesProps = {

@@ -12,7 +12,7 @@ import {
   flip,
 } from '@floating-ui/react';
 import CardPopper from './CardPopper';
-import { Attributes } from '../types/Anime';
+import { Attributes } from '../../../types/Anime';
 
 type AnimeCardProps = {
   id: string;
