@@ -1,30 +1,28 @@
 import { useLoaderData } from 'react-router-dom';
 import fetchTrendingAnimes from '../api/fetchTrendingAnimes';
-import AnimeCard from '../components/Animes/Anime/AnimeItem';
-import Anime from '../types/Anime';
+import AnimeSection, {
+  type AnimeSectionProps,
+} from '../components/Home/AnimeSection';
 
-type TrendingAnimes = {
-  trendingAnimes: Anime[];
+type HomeLoaderData = {
+  trendingAnimes: AnimeSectionProps['animes'];
 };
 
-export const loader = async (): Promise<TrendingAnimes> => {
+export const loader = async (): Promise<HomeLoaderData> => {
   const { data: trendingAnimes } = await fetchTrendingAnimes();
 
   return { trendingAnimes };
 };
 
 const Home = () => {
-  const { trendingAnimes } = useLoaderData() as TrendingAnimes;
+  const { trendingAnimes } = useLoaderData() as HomeLoaderData;
 
   return (
-    <div className="container mx-auto mt-4 flex gap-4">
-      {trendingAnimes.map(({ id, attributes }: Anime) => (
-        <AnimeCard
-          key={id}
-          id={id}
-          attributes={attributes}
-        />
-      ))}
+    <div className="container mx-auto">
+      <AnimeSection
+        title="Trending"
+        animes={trendingAnimes}
+      />
     </div>
   );
 };
