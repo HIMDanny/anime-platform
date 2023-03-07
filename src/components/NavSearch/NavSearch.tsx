@@ -1,10 +1,40 @@
-/* eslint-disable @typescript-eslint/promise-function-async */
 import { useEffect, useRef, useState } from 'react';
-import { useQuery } from 'react-query';
 import getAnimesByTitle from '../../api/getAnimesByTitle';
 import useDebounce from '../../hooks/useDebounce';
+import type Animes from '../../types/Animes';
 import LoadingSpinner from '../LoadingSpinner';
 import NavSearchDropdown from './NavSearchDropdown';
+
+const SearchIcon = ({ isSearching }: { isSearching: boolean }) => {
+  if (isSearching) {
+    return (
+      <LoadingSpinner
+        className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+        size="xs"
+      />
+    );
+  }
+
+  return (
+    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+      <svg
+        aria-hidden="true"
+        className="h-5 w-5 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        ></path>
+      </svg>
+    </div>
+  );
+};
 
 const NavBarSearch = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -12,21 +42,6 @@ const NavBarSearch = () => {
   const { data, isSearching } = useSearchByTitle(searchInput);
 
   const formRef = useRef<HTMLFormElement>(null);
-
-  const debouncedSearchInput = useDebounce(searchInput, 300);
-
-  // ? sometimes don't show data when deleting the word by letter
-  const {
-    data: searchedAnimes,
-    isLoading,
-    isFetching,
-  } = useQuery(
-    ['search', searchInput],
-    () => getAnimesByTitle(debouncedSearchInput),
-    {
-      enabled: Boolean(debouncedSearchInput),
-    },
-  );
 
   const onSearchInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setSearchInput(e.currentTarget.value);
@@ -66,30 +81,7 @@ const NavBarSearch = () => {
         Search
       </label>
       <div className="relative">
-        {isLoading || isFetching ? (
-          <LoadingSpinner
-            className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
-            size="xs"
-          />
-        ) : (
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg
-              aria-hidden="true"
-              className="h-5 w-5 text-gray-500 dark:text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              ></path>
-            </svg>
-          </div>
-        )}
+        <SearchIcon isSearching={isSearching} />
 
         <input
           autoComplete="off"
