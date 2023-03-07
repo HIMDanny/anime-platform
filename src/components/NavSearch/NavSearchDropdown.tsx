@@ -4,35 +4,34 @@ import SearchCard from './SearchCard';
 
 export type NavSearchDropdownProps = {
   items: Anime[] | undefined;
+  onClose: () => void;
 };
 
-const DropdownContainer: React.FC<React.HTMLAttributes<HTMLDivElement>> = (
-  props,
-) => (
-  <div
-    className={`absolute top-12 max-h-[500px] w-full overflow-y-auto bg-gray-900 p-2 ${props.className}`}
-  >
-    {props.children}
-  </div>
-);
+const Backdrop = ({ onClose }: { onClose: () => void }) => {
+  return (
+    <div
+      onClick={onClose}
+      className="fixed inset-x-0 top-16 h-screen bg-gray-900 bg-opacity-30"
+    />
+  );
+};
 
-const NavSearchDropdown = ({ items }: NavSearchDropdownProps) => {
+const NavSearchDropdown = ({ items, onClose }: NavSearchDropdownProps) => {
   let dropdownContent;
-  if (typeof items === 'undefined') {
-    return (
-      <DropdownContainer className="p-3">
-        <LoadingSpinner
-          size="lg"
-          className="text-center"
-        />
-      </DropdownContainer>
-    );
-  }
 
   dropdownContent = <p className="text-center">No items found.</p>;
 
-  if (items.length > 0) {
-    dropdownContent = items.map(({ id, attributes }) => (
+  if (typeof items === 'undefined') {
+    dropdownContent = (
+      <LoadingSpinner
+        size="lg"
+        className="text-center"
+      />
+    );
+  }
+
+  if (items?.length! > 0) {
+    dropdownContent = items!.map(({ id, attributes }) => (
       <SearchCard
         key={id}
         id={id}
@@ -41,6 +40,13 @@ const NavSearchDropdown = ({ items }: NavSearchDropdownProps) => {
     ));
   }
 
-  return <DropdownContainer>{dropdownContent}</DropdownContainer>;
+  return (
+    <>
+      <Backdrop onClose={onClose} />
+      <div className="absolute top-12 max-h-[500px] w-full overflow-y-auto bg-gray-900 p-2">
+        {dropdownContent}
+      </div>
+    </>
+  );
 };
 export default NavSearchDropdown;
