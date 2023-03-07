@@ -1,5 +1,5 @@
 import type Anime from '../../types/Anime';
-import LoadingSpinner from '../LoadingSpinner';
+import LoadingSpinner from '../UI/LoadingSpinner';
 import SearchCard from './SearchCard';
 
 export type NavSearchDropdownProps = {

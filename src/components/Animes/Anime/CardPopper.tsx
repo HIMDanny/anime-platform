@@ -8,7 +8,7 @@ import StatusBadge from './StatusBadge';
 import { useQuery } from 'react-query';
 import getAnimeGenres from '../../../api/getAnimeGenresById';
 import { createPortal } from 'react-dom';
-import LoadingSpinner from '../../LoadingSpinner';
+import LoadingSpinner from '../../UI/LoadingSpinner';
 import AnimeTypes from './AnimeTypes';
 
 // TODO: show different colors of rating depending on points

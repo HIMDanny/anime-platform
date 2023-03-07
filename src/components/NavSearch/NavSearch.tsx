@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import getAnimesByTitle from '../../api/getAnimesByTitle';
 import useDebounce from '../../hooks/useDebounce';
 import type Animes from '../../types/Animes';
-import LoadingSpinner from '../LoadingSpinner';
+import LoadingSpinner from '../UI/LoadingSpinner';
 import NavSearchDropdown from './NavSearchDropdown';
 
 const SearchIcon = ({ isSearching }: { isSearching: boolean }) => {
