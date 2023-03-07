@@ -4,12 +4,12 @@ import { forwardRef, type RefObject } from 'react';
 import { type Attributes } from '../../../types/Anime';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
-import StatusBadge from './StatusBadge';
 import { useQuery } from 'react-query';
 import getAnimeGenres from '../../../api/getAnimeGenresById';
 import { createPortal } from 'react-dom';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 import AnimeTypes from './AnimeTypes';
+import AnimeRating from './AnimeRating';
 
 // TODO: show different colors of rating depending on points
 
@@ -68,9 +68,7 @@ const CardPopper = forwardRef<HTMLDivElement, CardPopperProps>(
           </div>
         )}
 
-        <div className="mt-2 text-sm">
-          <span className="font-bold">Rating:</span> {attributes.averageRating}
-        </div>
+        <AnimeRating rating={attributes.averageRating} />
       </>
     );
 
