@@ -1,6 +1,6 @@
 import { useLoaderData } from 'react-router-dom';
 import fetchTrendingAnimes from '../api/fetchTrendingAnimes';
-import AnimeCard from '../components/AnimeCard';
+import AnimeCard from '../components/Animes/Anime/AnimeItem';
 import Anime from '../types/Anime';
 
 type TrendingAnimes = {

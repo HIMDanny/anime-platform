@@ -1,5 +1,5 @@
 import { type Attributes } from '../../types/Anime';
-import AnimeTypes from '../AnimeTypes';
+import AnimeTypes from '../Animes/Anime/AnimeTypes';
 
 export type SearchCardProps = {
   id: string;

@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
 /* eslint-disable react/display-name */
 import { forwardRef, type RefObject } from 'react';
-import { type Attributes } from '../types/Anime';
+import { type Attributes } from '../../../types/Anime';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import StatusBadge from './StatusBadge';
 import { useQuery } from 'react-query';
-import getAnimeGenres from '../api/getAnimeGenresById';
+import getAnimeGenres from '../../../api/getAnimeGenresById';
 import { createPortal } from 'react-dom';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../../LoadingSpinner';
 import AnimeTypes from './AnimeTypes';
 
 // TODO: show different colors of rating depending on points
